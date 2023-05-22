@@ -2,10 +2,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const app = express();
-
 dotenv.config();
+
+const db = process.env.MONGO_URI
+console.log(db)
 try {
-    mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
+    mongoose.connect(db, { useNewUrlParser: true });
     console.log("MongoDb connected")
 } catch (error) {
     console.log(error)
