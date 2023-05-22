@@ -6,12 +6,11 @@ dotenv.config();
 
 const db = process.env.MONGO_URI
 console.log(db)
-try {
-    mongoose.connect(db, { useNewUrlParser: true });
-    console.log("MongoDb connected")
-} catch (error) {
-    console.log(error)
-}
+
+mongoose.connect(db, { useNewUrlParser: true })
+    .then(() => {
+        console.log("Mongodb connected")
+    }).catch((error) => console.log(error));
 
 app.get("/", (req, res) => {
     res.send("server is running")
